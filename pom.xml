@@ -30,24 +30,6 @@
   </distributionManagement>
 
   <build>
-    <pluginGroups>
-      <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
-    </pluginGroups>
-    <profiles>
-      <profile>
-        <id>sonar</id>
-        <activation>
-          <activeByDefault>true</activeByDefault>
-        </activation>
-        <properties>
-          <sonar.host.url>http://localhost:9000</sonar.host.url>
-	  <sonar.login>7d64aa2e154e4e3df1ad505d76c8a2f512d3ebb9</sonar.login>
-          <sonar.projectName>Hello World</sonar.projectName>
-          <sonar.projectVersion>master</sonar.projectVersion>
-          <sonar.test.exclusions>**/test/**/*.*</sonar.test.exclusions>
-        </properties>
-      </profile>
-    </profiles>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
