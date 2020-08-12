@@ -17,19 +17,19 @@ pipeline {
         stage ('build') {
             steps {
                 echo "build in dev branch - 2"
-                sh "mvn install"
+                dat "mvn install"
             }
         }
 	stage ('unit_testing') {
             steps {
                 echo "unit test"
-                sh "mvn test"
+                dat "mvn test"
             }
         }
 	stage ('sonar_analysis') {
             steps {
 		withSonarQubeEnv("LocalSonar") {
-                    sh "mvn sonar:sonar"
+                    dat "mvn sonar:sonar"
 		}
             }
         }
