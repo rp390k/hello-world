@@ -22,17 +22,12 @@
   </modules>
 
   <distributionManagement>
-    <repository>
-        <id>central</id>
-        <name>devnag-coedev010.nagarro.local-releases</name>
-        <url>http://10.127.130.66:8040/artifactory/ravi_3149871</url>
-    </repository>
-    <snapshotRepository>
-        <id>snapshots</id>
-        <name>devnag-coedev010.nagarro.local-snapshots</name>
-        <url>http://10.127.130.66:8040/artifactory/ravi_3149871</url>
-    </snapshotRepository>
-</distributionManagement>
+    <site>
+      <id>site-server</id>
+      <name>Test Project Site</name>
+      <url>file:///tmp/maven-project-site</url>
+    </site>
+  </distributionManagement>
 
   <build>
     <plugins>
