@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'maven:3-alpine' }
+        dockerfile true
     }
     tools {
         maven 'Maven 3.6'
