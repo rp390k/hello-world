@@ -1,7 +1,9 @@
 # Pull base image 
-From tomcat:8-jre8 
+From tomcat:alpine
 
 # Maintainer 
 MAINTAINER "ravi.prakash60@gmail.com" 
-COPY ./webapp.war /usr/local/tomcat/webapps
+RUN wget -O /usr/local/tomcat/webapps/launchstation04.war http://10.127.130.66:8040/artifactory/ravi_3149871/com/example/maven-project/webapp/1.0-SNAPSHOT
+EXPOSE 8080
+CMD /usr/local/tomcat/bin/catalina.sh run
 

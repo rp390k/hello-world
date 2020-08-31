@@ -51,5 +51,32 @@ pipeline {
 		)
             }
         }
+	stage ('Docker_Image') {
+            steps {
+		bat "/bin/docker build -t raviprakash60/dtr.nagarro.com:443/sample_app:${BUILD_NUMBER} --no-cache - Dockerfile ."
+            }
+        }
+	stage ('Pust_To_DTR') {
+            steps {
+		bat "/bin/docker docker push raviprakash60/dtr.nagarro.com:443/sample_app:${BUILD_NUMBER}"
+            }
+        }
+	stage ('Stop_Running_Container') {
+            steps {
+		bat '''
+			ContainerID=$(docker ps | grep 7000| cut -d -- .f l)
+			if [ $ContainerID ]
+			then 
+				docker stop $ContainerID
+				docker rm -f $ContainerID
+			fi
+		'''
+            }
+        }
+	stage ('Docker_Deployment') {
+            steps {
+		bat "docker run --name sample_app -d -p 7000:8080 raviprakash60/dtr.nagarro.com:443/sample_app:${BUILD_NUMBER}"
+            }
+        }
     }
 }
