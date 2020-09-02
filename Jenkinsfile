@@ -58,12 +58,14 @@ pipeline {
         }
 	stage ('Pust_To_DTR') {
 		withCredentials([usernamePassword( credentialsId: 'docker-hub-credentials', usernameVariable: 'raviprakash60', passwordVariable: 'Relectronics92@')]) {
+		    steps{
         		def registry_url = "registry.hub.docker.com/"
         		bat "docker login -u $USER -p $PASSWORD ${registry_url}"
         		docker.withRegistry("http://${registry_url}", "docker-hub-credentials") {
             			// Push your image now
            		 	bat "docker.exe push raviprakash60/dtr.nagarro.com/sample_app:${BUILD_NUMBER}"
         		}
+		    }
 		}
 	}
 
