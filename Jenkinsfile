@@ -62,7 +62,7 @@ environment {
         }
 	stage ('Pust_To_DTR') {
 		steps{
-				bat "docker login -u='raviprakash60' -p='Relectronics92@'"
+				bat "docker login dtr.nagarro.com -u='raviprakash60' -p='Relectronics92@'"
            		 	bat "docker.exe push raviprakash60/dtr.nagarro.com/sample_app:${BUILD_NUMBER}"
         	}
 	}
