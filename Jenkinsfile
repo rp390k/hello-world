@@ -53,12 +53,12 @@ pipeline {
         }
 	stage ('Docker_Image') {
             steps {
-		bat "docker.exe build -t raviprakash60/dtr.nagarro.com:443/sample_app:${BUILD_NUMBER} --no-cache - Dockerfile ."
+		bat "docker.exe build -t raviprakash60/dtr.nagarro.com:443/sample_app:${BUILD_NUMBER} --no-cache ."
             }
         }
 	stage ('Pust_To_DTR') {
             steps {
-		bat "docker.exe docker push raviprakash60/dtr.nagarro.com:443/sample_app:${BUILD_NUMBER}"
+		bat "docker.exe push raviprakash60/dtr.nagarro.com:443/sample_app:${BUILD_NUMBER}"
             }
         }
 	stage ('Stop_Running_Container') {
@@ -67,8 +67,8 @@ pipeline {
 			ContainerID=$(docker ps | grep 7000| cut -d -- .f l)
 			if [ $ContainerID ]
 			then 
-				docker stop $ContainerID
-				docker rm -f $ContainerID
+				docker.exe stop $ContainerID
+				docker.exe rm -f $ContainerID
 			fi
 		'''
             }
