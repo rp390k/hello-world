@@ -62,21 +62,18 @@ environment {
         }
 	stage ('Pust_To_DTR') {
 		steps{
-				bat "docker login dtr.nagarro.com -u='raviprakash60' -p='Relectronics92@'"
            		 	bat "docker.exe push raviprakash60/dtr.nagarro.com:${BUILD_NUMBER}"
         	}
 	}
 
 	stage ('Stop_Running_Container') {
             steps {
-		bat '''
-			ContainerID=$(docker ps | grep 7000| cut -d -- .f l)
-			if [ $ContainerID ]
-			then 
-				docker.exe stop $ContainerID
-				docker.exe rm -f $ContainerID
-			fi
-		'''
+		bat "ContainerID=$(docker ps | grep 7000| cut -d -- .f l)^
+			if [ $ContainerID ]^
+			then^
+				docker.exe stop $ContainerID^
+				docker.exe rm -f $ContainerID^
+			fi"
             }
         }
 	stage ('Docker_Deployment') {
