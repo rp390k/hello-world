@@ -53,12 +53,12 @@ pipeline {
         }
 	stage ('Docker_Image') {
             steps {
-		bat "/bin/docker build -t raviprakash60/dtr.nagarro.com:443/sample_app:${BUILD_NUMBER} --no-cache - Dockerfile ."
+		bat "C:/Program%20Files/Docker/Docker/resources/bin/docker build -t raviprakash60/dtr.nagarro.com:443/sample_app:${BUILD_NUMBER} --no-cache - Dockerfile ."
             }
         }
 	stage ('Pust_To_DTR') {
             steps {
-		bat "/bin/docker docker push raviprakash60/dtr.nagarro.com:443/sample_app:${BUILD_NUMBER}"
+		bat "C:/Program%20Files/Docker/Docker/resources/bin/docker docker push raviprakash60/dtr.nagarro.com:443/sample_app:${BUILD_NUMBER}"
             }
         }
 	stage ('Stop_Running_Container') {
