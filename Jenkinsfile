@@ -68,7 +68,7 @@ environment {
 
 	stage ('Docker_Deployment') {
             steps {
-		bat "docker.exe run --name sample_app -d -p 7000:8080 raviprakash60/dtr.nagarro.com:${BUILD_NUMBER}"
+		bat "docker.exe run --name sample_app -d -p 7000:80 raviprakash60/dtr.nagarro.com:${BUILD_NUMBER}"
             }
         }
     }
