@@ -66,16 +66,6 @@ environment {
         	}
 	}
 
-	stage ('Stop_Running_Container') {
-            steps {
-		bat "ContainerID=$(docker ps | grep 7000| cut -d -- .f l)^
-			if [ $ContainerID ]^
-			then^
-				docker.exe stop $ContainerID^
-				docker.exe rm -f $ContainerID^
-			fi"
-            }
-        }
 	stage ('Docker_Deployment') {
             steps {
 		bat "docker.exe run --name sample_app -d -p 7000:8080 raviprakash60/dtr.nagarro.com:${BUILD_NUMBER}"
